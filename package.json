@@ -1,6 +1,6 @@
 {
   "name": "vuedialog",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "build": "npm run test && rm -rf ./dist && webpack --config ./webpack.config.js && webpack --config webpack.config.min.js",
     "test": "karma start karma.unit.js",

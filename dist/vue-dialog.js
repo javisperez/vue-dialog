@@ -1,5 +1,5 @@
 /*!
- *  VueDialog plugin v0.0.1
+ *  VueDialog plugin v1.0.0
  * 
  *  Dialog windows for Vue (like confirm or alert), based on Vuedals.
  * 
