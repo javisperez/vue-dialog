@@ -35,9 +35,7 @@
   "homepage": "https://github.com/javisperez/vue-dialog",
   "dependencies": {
     "deepmerge": "^1.3.2",
-    "vue": "^2.1.10",
-    "vue-longpress": "^1.0.1",
-    "vuedals": "^1.1.0"
+    "vue-longpress": "^1.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",

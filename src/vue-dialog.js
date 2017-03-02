@@ -1,11 +1,17 @@
-import { Bus as Vuedals } from 'vuedals';
 import Longpress from 'vue-longpress';
 import Merge from 'deepmerge';
 
 class _VueDialog {
+    constructor() {
+        this.bus = null;
+    }
+
+    setBus(bus) {
+        this.bus = bus;
+    }
+
     // Confirm dialog
     confirm(message = 'Are you sure?', params = {}) {
-
         const defaults = {
             title: 'Please confirm',
             labels: {
@@ -17,8 +23,9 @@ class _VueDialog {
         options = Merge(defaults, params);
 
         return new Promise((resolve, reject) => {
+            const Bus = this.bus;
 
-            Vuedals.$emit('new', {
+            Bus.$emit('new', {
                 name: 'vue-dialog confirm',
 
                 dismisable: false,
@@ -37,12 +44,12 @@ class _VueDialog {
 
                     methods: {
                         success() {
-                            Vuedals.$emit('close');
+                            Bus.$emit('close');
                             resolve();
                         },
 
                         cancel() {
-                            Vuedals.$emit('close');
+                            Bus.$emit('close');
                             reject();
                         }
                     },
@@ -80,7 +87,9 @@ class _VueDialog {
         options = Merge(defaults, params);
 
         return new Promise((resolve, reject) => {
-            Vuedals.$emit('new', {
+            const Bus = this.bus;
+
+            Bus.$emit('new', {
                 name: 'vue-dialog hard-confirm',
 
                 title: null,
@@ -105,12 +114,12 @@ class _VueDialog {
 
                     methods: {
                         confirm() {
-                            Vuedals.$emit('close');
+                            Bus.$emit('close');
                             resolve();
                         },
 
                         cancel() {
-                            Vuedals.$emit('close');
+                            Bus.$emit('close');
                             reject();
                         }
                     },
@@ -158,8 +167,9 @@ class _VueDialog {
     alert(message, buttonLabel='Ok') {
 
         return new Promise(resolve => {
+            const Bus = this.bus;
 
-            Vuedals.$emit('new', {
+            Bus.$emit('new', {
                 dismisable: false,
 
                 name: 'vue-dialog alert',
@@ -176,7 +186,7 @@ class _VueDialog {
 
                     methods: {
                         close() {
-                            Vuedals.$emit('close');
+                            Bus.$emit('close');
                             resolve();
                         }
                     },
@@ -192,9 +202,8 @@ class _VueDialog {
                     `
                 }
             });
-
         });
     }
 }
 
-export const VueDialog = new _VueDialog();
+export default new _VueDialog();
