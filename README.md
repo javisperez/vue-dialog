@@ -14,6 +14,7 @@ More info about the types, below
 
 ## DEMO
 
+Live demo on jsFiddle: https://jsfiddle.net/041r81r0/
 
 ## Example
 
@@ -66,8 +67,20 @@ For more info on how to setup Vuedals, check the repo: https://github.com/javisp
 
 ## Install
 
+**Be sure that you have Vuedals install, as is a dependency**
+
+Install with npm:
 ```
 $ npm install vuedialog --save
+```
+
+After that you need to pass the Vuedal's Event Bus instance to trigger the open and close methods, example:
+
+```
+import { Bus } from 'vuedals';
+import VueDialog from 'vue-dialog';
+
+VueDialog.setBus(Bus);
 ```
 
 ## Usage 
