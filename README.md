@@ -19,13 +19,17 @@ Live demo on jsFiddle: https://jsfiddle.net/041r81r0/
 ## Example
 
 ```js
-import { VueDialog } from 'vuedialog';
+import VueDialog from 'vuedialog';
+import { Bus, Component as  Vuedals } from 'vuedals';
+
+VueDialog.setBus(Bus);
 
 var vm = new Vue({
 	el: '#app',
 	
 	components: {
-        VueDialog
+        VueDialog,
+        Vuedals
     },
 
     methods: {
@@ -36,7 +40,11 @@ var vm = new Vue({
         }
     },
 	
-	template: `<div>To continue, <span @click="continue()">click here</span></div>`
+	template: `<div>
+        To continue, <span @click="continue()">click here</span>
+
+        <vuedals></vuedals>
+    </div>`
 });
 ```
 
@@ -48,16 +56,16 @@ $ npm install vuedals --save
 ```
 
 ```
-import { Component as Vuedal } from 'vuedals';
+import { Component as Vuedals } from 'vuedals';
 
 Vue.component('my-component', {
     components: {
-        Vuedal
+        Vuedals
     },
 
     template: `
         <div>
-            <vuedal></vuedal>
+            <vuedals></vuedals>
         </div>
     `
 });
@@ -109,8 +117,8 @@ Will open an alert window with the given message.
 ##### arguments
 | Argument           | Type         | Default     | Description                         |
 |--------------------|--------------|-------------|-------------------------------------|
-| **message**        | String       | ''          | The mesage to show                  |
-| **buttonLabel**    | String       | 'Ok'        | The label of the button             |
+| **message**        | String       | ""          | The mesage to show                  |
+| **buttonLabel**    | String       | "Ok"        | The label of the button             |
 
 ### confirm
 
@@ -121,14 +129,14 @@ Will open a confirm window with the message and the given options.
 ##### arguments
 | Argument            | Type         | Default          | Description                         |
 |---------------------|--------------|------------------|-------------------------------------|
-| **message**         | String       | 'Are you sure?'  | The mesage to show                  |
+| **message**         | String       | "Are you sure?"  | The mesage to show                  |
 | **options**         | Object       | *see below*      | Options for this confirm            |
 
 ###### options
 | Option    | Type   | Default                      | Description                                 |
 |-----------|--------|------------------------------|---------------------------------------------|
-| **title** | String | 'Please confirm'             | The title of the window                     |
-| **labels**| Object | {ok: *'Ok'*, cancel: *'Cancel'*} | The labels of the \<ok\> and \<cancel\> buttons |
+| **title** | String | "Please confirm"             | The title of the window                     |
+| **labels**| Object | {ok: *"Ok"*, cancel: *"Cancel"*} | The labels of the \<ok\> and \<cancel\> buttons |
 
 ### hardConfirm
 
@@ -139,13 +147,13 @@ Opens a "hard confirm" window dialog, this is a confirm in which the user has to
 ##### arguments
 | Argument                 | Type         | Default                       | Description                            |
 |--------------------------|--------------|-------------------------------|----------------------------------------|
-| **message**              | String       | 'Are you sure?'               | The mesage to show                     |
-| **confirmationMessage**  | String       | 'I really want to do it'      | The message the user will need to type  |
+| **message**              | String       | "Are you sure?"               | The mesage to show                     |
+| **confirmationMessage**  | String       | "I really want to do it"      | The message the user will need to type  |
 | **options**              | Object       | *see below*                   | The custom options                     |
 
 ###### options
 | Option       | Type    | Default                                                                                                                | Description                                                                                         |
 |--------------|---------|------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
 | **duration** | Integer | 5                                                                                                                      | How many seconds the user will need to press the confirmation button                                |
-| **labels**   | Object  | {ok: *'Yes, i\'m sure'*, cancel: *'Cancel'*, pressing: *'Keep pressing...'*, confirmed: *'Confirmed, please wait...'*} | The labels of the \<ok\> and \<cancel\> buttons, and \<pressing\>, \<confirmed\> states for the \<ok\> button |
+| **labels**   | Object  | {ok: *"Yes, i'm sure"*, cancel: *"Cancel"*, pressing: *"Keep pressing..."*, confirmed: *"Confirmed, please wait..."*} | The labels of the \<ok\> and \<cancel\> buttons, and \<pressing\>, \<confirmed\> states for the \<ok\> button |
 
