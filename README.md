@@ -55,7 +55,7 @@ This plugin depends on `Vuedals` so you need to have Vuedals as a component depe
 $ npm install vuedals --save
 ```
 
-```
+```js
 import { Component as Vuedals } from 'vuedals';
 
 Vue.component('my-component', {
@@ -84,7 +84,7 @@ $ npm install vuedialog --save
 
 After that you need to pass the Vuedal's Event Bus instance to trigger the open and close methods, example:
 
-```
+```js
 import { Bus } from 'vuedals';
 import VueDialog from 'vue-dialog';
 
@@ -92,7 +92,7 @@ VueDialog.setBus(Bus);
 ```
 
 ## Usage 
-```
+```js
 import { VueDialog } from 'vuedialog';
 
 Vue.component('my-component', {
@@ -110,7 +110,9 @@ This plugin has 3 methods you can call:
 
 ### alert
 
-`VueDialog.alert(message[, buttonLabel])`
+```js
+VueDialog.alert(message[, buttonLabel])
+```
 
 Will open an alert window with the given message.
 
@@ -122,7 +124,9 @@ Will open an alert window with the given message.
 
 ### confirm
 
-`VueDialog.confirm(message[, options])`
+```js
+VueDialog.confirm(message[, options])
+```
 
 Will open a confirm window with the message and the given options.
 
@@ -140,7 +144,9 @@ Will open a confirm window with the message and the given options.
 
 ### hardConfirm
 
-`VueDialog.hardConfirm(message[, confirmationMessage[, options]])`
+```js
+VueDialog.hardConfirm(message[, confirmationMessage[, options]])
+```
 
 Opens a "hard confirm" window dialog, this is a confirm in which the user has to type a given *confirmation message* and press the "im sure" button for a given amount of seconds. This is intended for really sensitive actions.
 
