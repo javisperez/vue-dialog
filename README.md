@@ -1,6 +1,6 @@
 # VueDialog
 
-Dialog windows for Vue (like confirm or alert), based on Vuedals.
+Dialog windows for Vue 2.x (like confirm or alert), based on Vuedals.
 
 These dialogs will return a _Promise_ when called that will resolve when confirmed and rejects when denied
 
