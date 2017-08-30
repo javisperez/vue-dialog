@@ -141,6 +141,7 @@ Will open a confirm window with the message and the given options.
 |-----------|--------|------------------------------|---------------------------------------------|
 | **title** | String | "Please confirm"             | The title of the window                     |
 | **labels**| Object | {ok: *"Ok"*, cancel: *"Cancel"*} | The labels of the \<ok\> and \<cancel\> buttons |
+| **payload**| Object | {}                          | The payload that can be usefull for determing/identifying vuedals instances |
 
 ### hardConfirm
 
@@ -156,6 +157,7 @@ Opens a "hard confirm" window dialog, this is a confirm in which the user has to
 | **message**              | String       | "Are you sure?"               | The mesage to show                     |
 | **confirmationMessage**  | String       | "I really want to do it"      | The message the user will need to type  |
 | **options**              | Object       | *see below*                   | The custom options                     |
+| **payload**              | Object       | {}                            | The payload that can be usefull for determing/identifying vuedals instances |
 
 ###### options
 | Option       | Type    | Default                                                                                                                | Description                                                                                         |

@@ -84,7 +84,8 @@ class _VueDialog {
                 pressing: 'Keep pressing...',
                 action: 'Confirmed, please wait...',
                 cancel: 'Cancel'
-            }
+            },
+            payload: {}
         },
 
         options = Merge(defaults, params);
@@ -96,6 +97,8 @@ class _VueDialog {
                 name: 'vue-dialog hard-confirm',
 
                 title: null,
+
+                payload: options.payload,
 
                 component: {
                     name: 'vue-dialog-hard-confirm',
