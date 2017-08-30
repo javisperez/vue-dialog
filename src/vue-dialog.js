@@ -17,7 +17,8 @@ class _VueDialog {
             labels: {
                 ok: 'Ok',
                 cancel: 'Cancel'
-            }
+            },
+            payload: {}
         },
 
         options = Merge(defaults, params);
@@ -31,6 +32,8 @@ class _VueDialog {
                 dismisable: false,
 
                 title: options.title,
+
+                payload: options.payload,
 
                 component: {
                     name: 'vue-dialog-confirm',
