@@ -18,7 +18,19 @@ class _VueDialog {
                 ok: 'Ok',
                 cancel: 'Cancel'
             },
-            payload: {}
+            payload: {},
+            template: `
+                        <div class="vue-dialog-content">
+                            <header v-if="options.title"{{ options.title }}</header>
+
+                            <p>{{ message }}</p>
+
+                            <div class="actions">
+                                <span @click="success()" class="btn btn-primary button-ok">{{ options.labels.ok }}</span>
+                                <span @click="cancel()" class="btn btn-default button-cancel">{{ options.labels.cancel }}</span>
+                            </div>
+                        </div>
+                    `
         },
 
         options = Merge(defaults, params);
@@ -57,18 +69,7 @@ class _VueDialog {
                         }
                     },
 
-                    template: `
-                        <div class="vue-dialog-content">
-                            <header v-if="options.title"{{ options.title }}</header>
-
-                            <p>{{ message }}</p>
-
-                            <div class="actions">
-                                <span @click="success()" class="btn btn-primary button-ok">{{ options.labels.ok }}</span>
-                                <span @click="cancel()" class="btn btn-default button-cancel">{{ options.labels.cancel }}</span>
-                            </div>
-                        </div>
-                    `
+                    template: options.template
                 }
             });
         });
@@ -85,7 +86,23 @@ class _VueDialog {
                 action: 'Confirmed, please wait...',
                 cancel: 'Cancel'
             },
-            payload: {}
+            payload: {},
+            template: `
+                        <div>
+                            <div class="message">{{ message }}</div>
+                            <div class="confirmation-message">{{ confirmationMessage }}</div>
+                            <div class="input-container">
+                                <input type="text" v-model="typed" autofocus/>
+                                <div class="typed-progress-bar">
+                                    <span :style="'width:'+(progress * 100)+'%'"></span>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <longpress class="btn btn-danger" :disabled="!confirmed" :onConfirm="confirm" :duration="options.duration" :pressingText="options.labels.pressing" :actionText="options.labels.action">{{ options.labels.ok }}</longpress>
+                                <span class="btn btn-default" @click="cancel()">{{ options.labels.cancel }}</span>
+                            </div>
+                        </div>
+                    `
         },
 
         options = Merge(defaults, params);
@@ -148,22 +165,7 @@ class _VueDialog {
                         }
                     },
 
-                    template: `
-                        <div>
-                            <div class="message">{{ message }}</div>
-                            <div class="confirmation-message">{{ confirmationMessage }}</div>
-                            <div class="input-container">
-                                <input type="text" v-model="typed" autofocus/>
-                                <div class="typed-progress-bar">
-                                    <span :style="'width:'+(progress * 100)+'%'"></span>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <longpress class="btn btn-danger" :disabled="!confirmed" :onConfirm="confirm" :duration="options.duration" :pressingText="options.labels.pressing" :actionText="options.labels.action">{{ options.labels.ok }}</longpress>
-                                <span class="btn btn-default" @click="cancel()">{{ options.labels.cancel }}</span>
-                            </div>
-                        </div>
-                    `
+                    template: options.template
                 }
             });
         });
